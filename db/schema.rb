@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2022_10_21_054605) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -72,13 +71,6 @@ ActiveRecord::Schema.define(version: 2022_10_21_054605) do
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
-  
-  create_table "order_details", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "order_id"
-    t.integer "quantity"
-    t.integer "purchase_prise"
-    t.integer "product_status"
 
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
@@ -86,16 +78,15 @@ ActiveRecord::Schema.define(version: 2022_10_21_054605) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.integer "product_genre_id", null: false
-    t.string "name", null: false
-    t.text "introduction", null: false
-    t.integer "no_tax_price", null: false
-    t.boolean "is_sale_status", default: false, null: false
+  create_table "order_details", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "order_id"
+    t.integer "quantity"
+    t.integer "purchase_prise"
+    t.integer "product_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
@@ -110,7 +101,25 @@ ActiveRecord::Schema.define(version: 2022_10_21_054605) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.integer "product_genre_id", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "no_tax_price", null: false
+    t.boolean "is_sale_status", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shippings", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "name"
+    t.string "post_code"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-
 end
