@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'homes/top'
-  end
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -10,7 +7,6 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
 
   scope module: :public do
     root to: "homes#top"
@@ -35,6 +31,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: "homes#top"
     resources :products
     resources :productions
     resources :genres
