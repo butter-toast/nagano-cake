@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  # devise_for :adminsからadminに変更
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -12,26 +7,27 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  # public/の追加
-  root to: "public/homes#top"
-  get "homes/about" => "homes#about" , as: "about"
 
-  resources :products
-  resources :shippings
-  resources :cart_items
-  resources :customers do
-    member do
-      get :unsubscribe
-      patch :withdraw
+  scope module: :public do
+    root to: "homes#top"
+    get "about" => "homes#about", as: :about
+
+    resources :products
+    resources :shippings
+    resources :cart_items
+    resources :customers do
+      member do
+        get :unsubscribe
+        patch :withdraw
+      end
+    end
+    resources :orders do
+      collection do
+        post :log
+        get :complete
+      end
     end
   end
-  resources :orders do
-    collection do
-      post :log
-      get :complete
-    end
-  end
-
 
   namespace :admin do
     resources :products
