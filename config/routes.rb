@@ -8,18 +8,20 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about", as: :about
 
     resources :products
     resources :shippings
-    resources :cart_items
+    resources :cart_items,only: [:index, :create, :update, :destroy]
     resources :customers do
       member do
         get :unsubscribe
         patch :withdraw
       end
+
     end
     resources :orders do
       collection do
