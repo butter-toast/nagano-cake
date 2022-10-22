@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins,skip: [:registrations, :passwords], controllers: {
+  devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
@@ -9,11 +9,15 @@ Rails.application.routes.draw do
   }
 
   root to: "homes#top"
-  get "home/about" => "homes#about" , as: "about"
+  get "homes/about" => "homes#about" , as: "about"
 
   resources :products
   resources :shippings
-  resources :cart_items
+  resources :cart_items,only: [:index, :create, :update, :destroy] do
+    collection do
+      delete :destroy_all
+    end
+  end
   resources :customers do
     member do
       get :unsubscribe
