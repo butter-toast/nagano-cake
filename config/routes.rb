@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :admins,skip: [:registrations, :passwords], controllers: {
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
+  end
+  # devise_for :adminsからadminに変更
+  devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
@@ -7,9 +12,9 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-  root to: "homes#top"
-  get "home/about" => "homes#about" , as: "about"
+  # public/の追加
+  root to: "public/homes#top"
+  get "homes/about" => "homes#about" , as: "about"
 
   resources :products
   resources :shippings
