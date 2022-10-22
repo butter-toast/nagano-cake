@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   }
   # public/の追加
   root to: "public/homes#top"
-  get "home/about" => "homes#about" , as: "about"
+  get "homes/about" => "homes#about" , as: "about"
 
   resources :products
   resources :shippings
