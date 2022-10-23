@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about", as: :about
@@ -30,7 +31,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get "admin" => "admin/homes#top", as: :admin
   namespace :admin do
     resources :products
     resources :productions
