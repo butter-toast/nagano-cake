@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions",
-    # 5行目追記
-    passwords: "admin/passwords"
+    sessions: "admin/sessions"
   }
 
   devise_for :customers,skip: [:passwords], controllers: {
@@ -32,8 +30,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "admin" => "admin/homes#top", as: :admin
   namespace :admin do
-    root to: "homes#top"
     resources :products
     resources :productions
     resources :genres
