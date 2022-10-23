@@ -1,16 +1,5 @@
-
-
 <h2>商品新規登録</h2>
 
-<<<<<<< HEAD
-<%= form_with model:Product.new do |f| %>
-
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-  </div>
-  
-=======
 <%= form_with model: [:admin, @product], local: true do |f| %>
 
   <div class="form-group">
@@ -18,54 +7,30 @@
     <%= f.file_field :image, class: "form-control-file user_image", accept: 'image/*' %>
   </div>
 
->>>>>>> origin/develop
   <div class="form-group">
     <%= f.label :name,"商品名" %>
     <%= f.text_field:name %>
   </div>
-<<<<<<< HEAD
-  
-  <div class="form-group">
-    <%= f.label :introduction, "商品説明" %>
-    <%= f.text_area:introduction %> 
-=======
 
   <div class="form-group">
     <%= f.label :introduction, "商品説明" %>
     <%= f.text_area:introduction %>
->>>>>>> origin/develop
   </div>
 
   <div class="form-group">
     <%= f.label :product_genre_id,"商品ジャンル" %>
     <%= f.select :product_genre_id ,[["ケーキ",1],["プリン",2],["焼き菓子",3],["キャンディ",4]] %>
   </div>
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> origin/develop
   <div class="form-group">
     <%= f.label :no_tax_price,"税抜き価格" %>
     <%= f.text_field:no_tax_price %>
   </div>
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> origin/develop
   <div class="form-group">
     <%= f.label :is_sale_status,"販売ステータス"%>
     <%= f.radio_button :is_sale_status ,"false" %>販売中<%= f.radio_button :is_sale_status ,"true" %>販売停止中
   </div>
-<<<<<<< HEAD
-  
-  
-  
-=======
 
-
-
->>>>>>> origin/develop
   <%= f.submit "新規登録", class: 'btn btn-success' %>
 <% end %>

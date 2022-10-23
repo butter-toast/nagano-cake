@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<h1>Admin::Products#edit</h1>
-<p>Find me in app/views/admin/products/edit.html.erb</p>
-=======
-
 <h2>商品編集</h2>
 <%= form_with model:[:admin, @product], local: true do |f| %>
   <div class="form-group">
@@ -35,8 +30,5 @@
     <%= f.radio_button :is_sale_status ,"false" %>販売中<%= f.radio_button :is_sale_status ,"true" %>販売停止中
   </div>
 
-
-
   <%= f.submit "変更を保存", class: 'btn btn-success' %>
-<% end %> 
->>>>>>> origin/develop
+<% end %>
