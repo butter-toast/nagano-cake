@@ -6,5 +6,7 @@ class Product < ApplicationRecord
   def with_tax_price
     (no_tax_price * 1.1).floor
   end
+  
+  has_one_attached:image
 
 end
