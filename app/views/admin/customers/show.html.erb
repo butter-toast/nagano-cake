@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5 class="col-5 my-3 bg-light text-center">
+        <%= @customer.last_name + @customer.first_name %>さんの会員詳細
+      </h5>
+
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="col-3">会員ID</td>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td class="col-3">氏名</td>
+            <td><%= @customer.last_name + "　" + @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td class="col-3">フリガナ</td>
+            <td><%= @customer.last_name_kana + "　" + @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td class="col-3">郵便番号</td>
+            <td><%= @customer.post_code %></td>
+          </tr>
+          <tr>
+            <td class="col-3">住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td class="col-3">電話番号</td>
+            <td><%= @customer.phone_number %></td>
+          </tr>
+          <tr>
+            <td class="col-3">メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <td class="col-3">会員ステータス</td>
+            <td>
+              <% if @customer.is_withdrawal %>
+                <span class="text-secondary">退会</span>
+              <% else %>
+                <span class="text-success">有効</span>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-2"></td>
+            <td>
+              <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

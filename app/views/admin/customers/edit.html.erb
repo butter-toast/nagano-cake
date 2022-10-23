@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p><%= @customer.last_name + @customer.first_name %></p>
+
+      <%= form_with model: [:admin, @customer], local: true do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td class="col-3">会員ID</td>
+              <td><%= @customer.id %></td>
+            </tr>
+            <tr>
+              <td class="col-3">氏名</td>
+              <td><%= f.text_field :last_name %></td>
+              <td><%= f.text_field :first_name %></td>
+            </tr>
+            <tr>
+              <td class="col-3">フリガナ</td>
+              <td><%= f.text_field :last_name_kana %></td>
+              <td><%= f.text_field :first_name_kana %></td>
+            </tr>
+            <tr>
+              <td class="col-3">郵便番号</td>
+              <td><%= f.text_field :post_code %></td>
+            </tr>
+            <tr>
+              <td class="col-3">住所</td>
+              <td colspan="2"><%= f.text_field :address, size: 60 %></td>
+            </tr>
+            <tr>
+              <td class="col-3">電話番号</td>
+              <td><%= f.text_field :phone_number %></td>
+            </tr>
+            <tr>
+              <td class="col-3">メールアドレス</td>
+              <td><%= f.text_field :email %></td>
+            </tr>
+            <tr>
+              <td class="col-3">会員ステータス</td>
+              <td>
+                <%= f.radio_button :is_withdrawal, :false %>有効
+                <%= f.radio_button :is_withdrawal, :true %>退会
+              </td>
+            </tr>
+            <tr>
+              <td class="col-2"></td>
+              <td><%= f.submit '変更を保存', class: "btn btn-sm btn-success" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

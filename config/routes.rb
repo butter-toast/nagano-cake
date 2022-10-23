@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
+    sessions: "admin/sessions",
+    # 5行目追記
+    passwords: "admin/passwords"
   }
 
   devise_for :customers,skip: [:passwords], controllers: {
