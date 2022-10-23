@@ -1,0 +1,37 @@
+<h2>配送先登録/一覧</h2>
+
+<%= form_with model: @shipping do |f| %>
+  <h4>郵便番号</h4>
+  <%= f.text_field :post_code %>
+
+  <h4>住所</h4>
+  <%= f.text_field :address %>
+
+  <h4>宛名</h4>
+  <%= f.text_field :name %>
+
+  <%= f.submit "新規登録" %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shippings.each do |shipping| %>
+    <tr>
+      <td><%= @shipping.post_code %></td>
+      <td><%= @shipping.address %></td>
+      <td><%= @shipping.name %></td>
+      <td>
+        <%= link_to "編集する", edit_shipping_path, class:"btn btn-success" %>
+        <%= link_to "削除する", shipping_path(shipping.id), method: :delete,class: "btn btn-danger"  %>
+      </td>
+    </tr>
+  </tbody>
+</table>
