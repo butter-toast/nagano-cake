@@ -1,2 +1,38 @@
-<h1>トップページ</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <table class="table col-3">
+      <thead>
+        <tr><th>ジャンル検索</th></tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+          <tr><td>
+            <%= link_to genre.name %>
+          </td></tr>
+        <% end %>
+    </table>
+    <div class="col-9">
+
+      <div class="border border-dark">
+        ようこそ、ながのCAKEへ！</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。
+      </div>
+
+      <h2>新着商品</h2>
+      <table>
+        <% @products.each do |product| %>
+        <tr>
+  	      <td>
+            <%= image_tag product.image %>
+          </tb></br>
+          <tb><%= product.name %></tb></br>
+          <tb>¥<%= product.no_tax_price %></tb>
+        </tr>
+        <% end %>
+      </table>
+      <%= link_to "全ての商品を見る >", products_path %>
+    </div>
+  </div>
+</div>

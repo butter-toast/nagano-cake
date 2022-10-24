@@ -1,15 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-5">
+
 <header>
   <!--顧客側：ログイン後のヘッダー-->
+  <ul class="nav justify-content-end">
   <% if customer_signed_in? %>
-    <!--5〜14行目　ルーティングエラーのため一旦コメントアウト-->
     <li>
-      <%#= link_to "マイページ", customer_path(current_user) %>
+      <%= link_to "マイページ", customer_path(current_customer) %>
     </li>
     <li>
-      <%#= link_to "商品一覧", products_path %>
+      <%= link_to "商品一覧", products_path %>
     </li>
     <li>
-      <%#= link_to "カート",cart_items_path %>
+      <%= link_to "カート",cart_items_path %>
     </li>
     <li>
       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
@@ -26,8 +28,7 @@
       <%= link_to "注文履歴一覧", admin_path %>
     </li>
     <li>
-      <!--30行目　ルーティングエラーのため一旦コメントアウト-->
-      <%#= link_to "ジャンル一覧", admin_genres_path %>
+      <%= link_to "ジャンル一覧", admin_genres_path %>
     </li>
     <li>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
@@ -38,8 +39,7 @@
       <%= link_to "about", about_path %>
     </li>
     <li>
-      <!--29行目　ルーティングエラーのため一旦コメントアウト-->
-      <%#= link_to "商品一覧", products_path %>
+      <%= link_to "商品一覧", products_path %>
     </li>
     <li>
       <%= link_to "新規登録", new_customer_registration_path %>
@@ -48,4 +48,7 @@
       <%= link_to "ログイン",new_customer_session_path %>
     </li>
   <% end %>
+  </ul>
 </header>
+
+</nav>
