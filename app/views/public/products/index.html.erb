@@ -1,0 +1,11 @@
+
+
+<h2>商品一覧</h2><h3>（全<%= @products.count %>件）</h3>
+
+<% @products.each do |product| %>
+  <%= link_to product_path(product.id) do %>
+    <%= image_tag product.image %>
+    <%= product.name %>
+    ¥<%= product.with_tax_price %>
+  <% end %>
+<% end %>
