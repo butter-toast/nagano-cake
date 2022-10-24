@@ -3,6 +3,15 @@
     <div class="col">
       <h5 class="col-4 my-3 offset-1 bg-light text-center">会員情報編集</h5>
 
+      <% if @customer.errors.any? %>
+        <%= @customer.errors.count %> error prohibited this obj from being saved:
+        <ul>
+          <% @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= form_with model: @customer, url: customer_path do |f| %>
         <table class="table table-borderless">
           <tbody>
