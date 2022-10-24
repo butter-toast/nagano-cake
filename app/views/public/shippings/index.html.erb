@@ -25,13 +25,14 @@
   <tbody>
     <% @shippings.each do |shipping| %>
     <tr>
-      <td><%= @shipping.post_code %></td>
-      <td><%= @shipping.address %></td>
-      <td><%= @shipping.name %></td>
+      <td><%= shipping.post_code %></td>
+      <td><%= shipping.address %></td>
+      <td><%= shipping.name %></td>
       <td>
-        <%= link_to "編集する", edit_shipping_path, class:"btn btn-success" %>
+        <%= link_to "編集する", edit_shipping_path(shipping.id), class:"btn btn-success" %>
         <%= link_to "削除する", shipping_path(shipping.id), method: :delete,class: "btn btn-danger"  %>
       </td>
     </tr>
+    <% end %>
   </tbody>
 </table>
