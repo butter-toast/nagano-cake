@@ -1,3 +1,5 @@
+
+
 <h2>商品新規登録</h2>
 
 <%= form_with model: [:admin, @product], local: true do |f| %>
@@ -18,8 +20,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :product_genre_id,"商品ジャンル" %>
-    <%= f.collection_select(:product_genre_id, @genres, :id, :name, prompt:"--選択してください--"  ) %>
+    <%= f.label :genre_id,"商品ジャンル" %>
+    <%= f.collection_select(:genre_id, @genres, :id, :name, prompt:"--選択してください--"  ) %>
   </div>
 
   <div class="form-group">
@@ -31,6 +33,8 @@
     <%= f.label :is_sale_status,"販売ステータス"%>
     <%= f.radio_button :is_sale_status ,"false" %>販売中<%= f.radio_button :is_sale_status ,"true" %>販売停止中
   </div>
+
+
 
   <%= f.submit "新規登録", class: 'btn btn-success' %>
 <% end %>
