@@ -8,9 +8,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = current_customer
-    customer.update(customer_params)
-    redirect_to customer_path
+    @customer = current_customer
+    if @customer.update(customer_params)
+      redirect_to customer_path
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
@@ -19,7 +22,7 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     current_customer.update(is_withdrawal: true)
-    redirect_to destroy_customer_session_path
+    sign_out current_customer
   end
 
   private

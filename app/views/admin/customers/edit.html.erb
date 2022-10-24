@@ -3,6 +3,15 @@
     <div class="col">
       <p><%= @customer.last_name + @customer.first_name %></p>
 
+      <% if @customer.errors.any? %>
+        <%= @customer.errors.count %> error prohibited this obj from being saved:
+        <ul>
+          <% @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= form_with model: [:admin, @customer], local: true do |f| %>
         <table class="table table-borderless">
           <tbody>
