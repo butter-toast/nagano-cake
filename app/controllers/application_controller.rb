@@ -8,18 +8,22 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number])
   end
 
-  # ログイン後の遷移先
-  def after_sign_in_path_for(resource)
-    if customer_signed_in?
-      customer_path(resource)
-    else
+  # ログイン後のリダイレクト先
+  def after_sign_in_path_for(resource_or_scope)
+    if resource.is_a?(Admin)
       admin_path
+    else
+      root_path
     end
   end
 
-  # ログアウト後の遷移先
-  def after_sign_out_path_for(resource)
-    root_path
+  # ログアウト後のリダイレクト先
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :admin
+      new_admin_session_path
+    else
+      root_path
+    end
   end
 
 end
