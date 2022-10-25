@@ -10,12 +10,8 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @genres = Genre.all
-    if @product.save
-      redirect_to admin_product_path(@product)
-    else
-      render :new
-    end
+    @product.save
+    redirect_to admin_product_path(@product)
   end
 
 
@@ -25,12 +21,10 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @genres = Genre.all
   end
 
   def update
     @product = Product.find(params[:id])
-    @genres = Genre.all
     if @product.update(product_params)
       redirect_to admin_product_path(@product)
     else
@@ -41,6 +35,6 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:image,:name,:introduction,:no_tax_price,:is_sale_status,:genre_id)
+    params.require(:product).permit(:image,:name,:introduction,:no_tax_price,:is_sale_status,:product_genre_id)
   end
 end
