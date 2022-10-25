@@ -15,6 +15,5 @@ class Customer < ApplicationRecord
   validates :first_name_kana, presence:true
   validates :post_code, presence:true
   validates :address, presence:true
-  validates :password, presence:true
   validates :email, presence:true
 end
