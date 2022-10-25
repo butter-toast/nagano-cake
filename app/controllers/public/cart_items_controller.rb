@@ -22,7 +22,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    cart_item = current_customer.cart_items.find_by(params[:id])
+    # cart_item = current_customer.cart_items.find_by(params[:id])
+    cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
     redirect_to cart_items_path
   end
@@ -32,6 +33,12 @@ class Public::CartItemsController < ApplicationController
     cart_item.destroy
     @cart_items = CartItem.all
     render 'index'
+  end
+
+  def destroy_all
+    @cart_items = CartItem.all
+    @cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
 
