@@ -1,4 +1,13 @@
-<%= form_with model: @order, url: order_path(current_customer), local: true do |f| %>
+<%= form_with model: @order, url: log_orders_path, local: true do |f| %>
+  <p>支払い方法</p>
+  <%= f.radio_button :payment_method, "credit_card" %>
+  <%= f.label :payment_method, "クレジットカード" %>
+
+  <%= f.radio_button :payment_method, "transfer" %>
+  <%= f.label :payment_method, "銀行振込" %>
+
+
+  <p>お届け先</p>
   <%= f.radio_button :address_number, 1 %>
   <%= f.label :address_number_1, "ご自身の住所" %>
   <%= current_customer.address %>
