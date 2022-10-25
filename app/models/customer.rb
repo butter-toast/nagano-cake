@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
    
   has_many :cart_items
+  has_many :shippings
 
   validates :last_name, presence:true
   validates :first_name, presence:true
