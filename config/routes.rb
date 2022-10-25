@@ -18,7 +18,12 @@ Rails.application.routes.draw do
 
     resources :products
     resources :shippings
-    resources :cart_items,only: [:index, :create, :update, :destroy]
+    resources :cart_items,only: [:index, :create, :update, :destroy, :destroy_all] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    
     resources :customers do
       member do
         get :unsubscribe
