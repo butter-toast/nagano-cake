@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_24_050438) do
+ActiveRecord::Schema.define(version: 2022_10_21_054605) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,8 +66,6 @@ ActiveRecord::Schema.define(version: 2022_10_24_050438) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
@@ -76,6 +74,8 @@ ActiveRecord::Schema.define(version: 2022_10_24_050438) do
     t.string "address", null: false
     t.string "phone_number", null: false
     t.boolean "is_withdrawal", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -110,13 +110,13 @@ ActiveRecord::Schema.define(version: 2022_10_24_050438) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.integer "genre_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "no_tax_price", null: false
     t.boolean "is_sale_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "genre_id"
   end
 
   create_table "shippings", force: :cascade do |t|
