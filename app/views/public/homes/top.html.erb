@@ -10,29 +10,30 @@
             <%= link_to genre.name %>
           </td></tr>
         <% end %>
+      </tbody>
     </table>
     <div class="col-9">
-
-      <div class="border border-dark">
+      <p class="border border-dark">
         ようこそ、ながのCAKEへ！</br>
         このサイトは、ケーキ販売のECサイトになります。</br>
         会員でない方も商品の閲覧はできますが、</br>
         購入には会員登録が必要になります。
-      </div>
-
+      </p>
       <h2>新着商品</h2>
       <table>
         <% @products.each do |product| %>
         <tr>
   	      <td>
-            <%= image_tag product.image %>
+  	        <%= link_to product_path(product) do %>
+              <%= image_tag product.image %>
+            <% end %>
           </tb></br>
           <tb><%= product.name %></tb></br>
           <tb>¥<%= product.no_tax_price %></tb>
         </tr>
         <% end %>
       </table>
-      <%= link_to "全ての商品を見る >", products_path %>
+      <%= link_to "全ての商品を見る >", products_path, class: "text-end" %>
     </div>
   </div>
 </div>
