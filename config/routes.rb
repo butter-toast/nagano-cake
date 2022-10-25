@@ -23,14 +23,21 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-    
-    resources :customers do
-      member do
-        get :unsubscribe
-        patch :withdraw
-      end
 
-    end
+    # resource :customers do
+    #   member do
+    #     get :unsubscribe
+    #     patch :withdraw
+    #   end
+
+    # end
+    
+    get 'my_page' => 'customers#show', as: 'my_page'
+    get 'information/edit' => 'customers#edit'
+    patch 'information' => 'customers#update'
+    get 'unsubscribe' => 'customers#unsubscribe'
+    patch 'withdraw' => 'customers#withdraw'
+    
     resources :orders do
       collection do
         post :log
