@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   has_many :cart_items
+  has_many :order_detail
   belongs_to :genre
 
   validates :no_tax_price, presence: true
