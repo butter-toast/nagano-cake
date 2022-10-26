@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h5 class="col-4 my-3 offset-1 bg-light text-center">商品編集</h5>
+      <h5>商品編集</h5>
 
       <% if @product.errors.any? %>
         <%= @product.errors.count %> error prohibited this obj from being saved:
@@ -18,7 +18,7 @@
             <tr>
               <div class="form-group">
                 <td>
-                  <%= f.label :image %>
+                  <%= f.label :image, "商品画像" %>
                 </td>
                 <td>
                   <%= f.file_field :image, class: "form-control-file user_image", accept: 'image/*' %>
@@ -61,7 +61,7 @@
                   <%= f.label :no_tax_price,"税抜き価格" %>
                 </td>
                 <td>
-                  <%= f.text_field:no_tax_price %>
+                  <%= f.text_field:no_tax_price %>円
                 </td>
               </div>
             </tr>

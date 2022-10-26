@@ -1,12 +1,48 @@
-
-<%= image_tag @product.image %>
-<%= @product.name %>
-<%= @product.introduction %>
-
-<%= @product.with_tax_price %>
-
-<%= form_with model:@cart_item, url: cart_items_path, method: :post, local: true do |f| %>
-  <%= f.hidden_field :product_id, value: @product.id %>
-  <%= f.select :quantity,[1,2,3,4,5,6,7,8,9,10],prompt:"個数選択"%>
-  <%= f.submit"カートに入れる"%>
-<% end %>
+<div class="container">
+  <div class="row">
+    <table class="col-2 table">
+      <thead>
+        <tr>
+          <th>ジャンル検索</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+          <tr>
+            <td>
+              <%= link_to genre.name %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="col-9">
+      <div class="media">
+        <%= image_tag @product.get_product_image(300, 300), class: "media-left media-object" %>
+        <div class="media-body offset-1">
+          <table class="table table-borderless">
+            <tr>
+              <td><%= @product.name %></td>
+            </tr>
+            <tr>
+              <td colspan="2"><%= @product.introduction %></td>
+            </tr>
+            <tr>
+              <td>¥<%= @product.with_tax_price %></td>
+            </tr>
+            <tr>
+              <%= form_with model:@cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+                <td>
+                  <%= f.hidden_field :product_id, value: @product.id %>
+                  <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], prompt:"個数選択"%>
+                </td>
+                <td><%= f.submit"カートに入れる", class: "btn btn-sm btn-success"%></td>
+              <% end %>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
