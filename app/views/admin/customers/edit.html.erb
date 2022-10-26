@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <p><%= @customer.last_name + @customer.first_name %></p>
+      <h5><%= @customer.last_name + @customer.first_name %></h5>
 
       <% if @customer.errors.any? %>
         <%= @customer.errors.count %> error prohibited this obj from being saved:

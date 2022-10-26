@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h5 class="col-3 my-3 offset-1 bg-light text-center">マイページ</h5>
-      <p>登録情報　<%= link_to '編集する', edit_customer_path, class: "btn btn-sm btn-success" %></p>
+      <h5>マイページ</h5>
+      <p>登録情報　<%= link_to '編集する', information_edit_path, class: "btn btn-sm btn-success" %></p>
 
       <table class="table table-bordered">
         <tbody>
@@ -32,6 +32,7 @@
           </tr>
         </tbody>
       </table>
+      <p>配送先 <%= link_to '一覧を見る', shippings_path, class: "btn btn-sm btn-primary" %></p>
     </div>
   </div>
 </div>

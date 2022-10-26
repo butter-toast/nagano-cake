@@ -40,7 +40,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :address, null: false
       t.string :phone_number, null: false
       t.boolean :is_withdrawal, null:false, default:false
-      
+
       t.timestamps null: false
     end
 

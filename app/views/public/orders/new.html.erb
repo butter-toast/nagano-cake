@@ -1,0 +1,26 @@
+<%= form_with model: @order, url: log_orders_path, local: true do |f| %>
+  <p>支払い方法</p>
+  <%= f.radio_button :payment_method, "credit_card" %>
+  <%= f.label :payment_method, "クレジットカード" %>
+
+  <%= f.radio_button :payment_method, "transfer" %>
+  <%= f.label :payment_method, "銀行振込" %>
+
+
+  <p>お届け先</p>
+  <%= f.radio_button :address_number, 1 %>
+  <%= f.label :address_number_1, "ご自身の住所" %>
+  <%= current_customer.address %>
+
+  <%= f.radio_button :address_number, 2 %>
+  <%= f.label :address_number_2, "登録先の住所" %>
+  <%= f.collection_select :registered, current_customer.shippings.all, :id, :address %>
+
+  <%= f.radio_button :address_number, 3 %>
+  <%= f.label :address_number_3, "新しいお届け先" %>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+  <%= f.label :address_name, "宛名" %>
+  <%= f.text_field :address_name %>
+  <%= f.submit "確認画面へ進む" %>
+<% end %>

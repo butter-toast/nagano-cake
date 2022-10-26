@@ -14,8 +14,7 @@
     </table>
     <div class="col-9">
       <div class="col-6">
-        <%= image_tag 'shop.jpg' %>
-        <div class="card-img-overlay">
+        <div class="text-center">
           <p class="border border-dark">
           ようこそ、ながのCAKEへ！</br>
           このサイトは、ケーキ販売のECサイトになります。</br>
@@ -23,6 +22,7 @@
           購入には会員登録が必要になります。
           </p>
         </div>
+        <%= image_tag 'shop.jpg' %>
       </div>
       <h2 class="mb-4">新着商品</h2>
         <div class= "row">
@@ -31,7 +31,7 @@
             <ul class="list-unstyled">
   	          <li>
   	            <%= link_to product_path(product) do %>
-                  <%= image_tag product.image, size: "180x150" %>
+                  <%= image_tag product.get_product_image(180,150) %>
                 <% end %>
               </li></br>
               <li>

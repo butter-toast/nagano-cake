@@ -1,11 +1,36 @@
+<div class="container">
+  <div class="row">
+    <table class="col-2 table">
+      <thead>
+        <tr>
+          <th>ジャンル検索</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+          <tr>
+            <td>
+              <%= link_to genre.name %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="col-9">
+      <h2>商品一覧</h2><h3>（全<%= @products.count %>件）</h3>
 
-
-<h2>商品一覧</h2><h3>（全<%= @products.count %>件）</h3>
-
-<% @products.each do |product| %>
-  <%= link_to product_path(product.id) do %>
-    <%= image_tag product.image %>
-    <%= product.name %>
-    ¥<%= product.with_tax_price %>
-  <% end %>
-<% end %>
+      <div class="d-flex flex-wrap">
+        <% @products.each do |product| %>
+        <div class="offset-1 flex-fill">
+          <%= link_to product_path(product) do %>
+            <%= image_tag product.get_product_image(200, 200) %>
+          <% end %>
+          <p><%= product.name %></p>
+          <p>¥<%= product.with_tax_price %></p>
+        </div>
+        <% end %>
+      </div>
+      <%= paginate @products %>
+    </div>
+  </div>
+</div>

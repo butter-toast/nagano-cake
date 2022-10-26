@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h5 class="col-4 my-3 offset-1 bg-light text-center">会員情報編集</h5>
+      <h5>会員情報編集</h5>
 
       <% if @customer.errors.any? %>
         <%= @customer.errors.count %> error prohibited this obj from being saved:
@@ -12,7 +12,7 @@
         </ul>
       <% end %>
 
-      <%= form_with model: @customer, url: customer_path do |f| %>
+      <%= form_with model: @customer, url: information_path do |f| %>
         <table class="table table-borderless">
           <tbody>
             <tr>
@@ -47,7 +47,7 @@
             <tr>
               <td class="col-3"></td>
               <td><%= f.submit '変更を保存', class: "btn btn-sm btn-success" %></td>
-              <td><%= link_to '退会する', unsubscribe_customer_path, class: "btn btn-sm btn-danger" %></td>
+              <td><%= link_to '退会する', unsubscribe_path, class: "btn btn-sm btn-danger" %></td>
             </tr>
           </tbody>
         </table>

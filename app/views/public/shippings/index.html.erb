@@ -1,38 +1,51 @@
-<h2>配送先登録/一覧</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5>配送先登録/一覧</h5>
+      <table class="table table-borderless">
+        <tbody>
+          <%= form_with model: @shipping do |f| %>
+            <tr>
+              <td class="col-4">郵便番号(ハイフンなし)</td>
+              <td><%= f.text_field :post_code %></td>
+            </tr>
+            <tr>
+              <td class="col-4">住所</td>
+              <td colspan="2"><%= f.text_field :address, size: 50 %></td>
+            </tr>
+            <tr>
+              <td class="col-4">宛名</td>
+              <td><%= f.text_field :name %></td>
+              <td><%= f.submit "新規登録", class:"btn btn-sm btn-success" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<%= form_with model: @shipping do |f| %>
-  <h4>郵便番号</h4>
-  <%= f.text_field :post_code %>
 
-  <h4>住所</h4>
-  <%= f.text_field :address %>
-
-  <h4>宛名</h4>
-  <%= f.text_field :name %>
-
-  <%= f.submit "新規登録" %>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th>宛名</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @shippings.each do |shipping| %>
-    <tr>
-      <td><%= shipping.post_code %></td>
-      <td><%= shipping.address %></td>
-      <td><%= shipping.name %></td>
-      <td>
-        <%= link_to "編集する", edit_shipping_path(shipping.id), class:"btn btn-success" %>
-        <%= link_to "削除する", shipping_path(shipping.id), method: :delete,class: "btn btn-danger"  %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shippings.each do |shipping| %>
+            <tr>
+              <td><%= shipping.post_code %></td>
+              <td><%= shipping.address %></td>
+              <td><%= shipping.name %></td>
+              <td>
+                <%= link_to "編集する", edit_shipping_path(shipping.id), class:"btn btn-sm btn-success" %>
+                <%= link_to "削除する", shipping_path(shipping.id), method: :delete, class: "btn btn-sm btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
