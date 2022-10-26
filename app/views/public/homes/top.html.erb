@@ -13,35 +13,33 @@
       </tbody>
     </table>
     <div class="col-9">
-      <div class="col-6">
-        <div class="text-center">
-          <p class="border border-dark">
-          ようこそ、ながのCAKEへ！</br>
-          このサイトは、ケーキ販売のECサイトになります。</br>
-          会員でない方も商品の閲覧はできますが、</br>
-          購入には会員登録が必要になります。
-          </p>
-        </div>
-        <%= image_tag 'shop.jpg' %>
+      <div class="mx-auto">
+        <p class="text-center">
+        ようこそ、ながのCAKEへ！</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。
+        </p>
+      <div class="text-center">
+        <%= image_tag 'shop.jpg'%>
       </div>
-      <h2 class="mb-4">新着商品</h2>
-        <div class= "row">
-          <div class="col-3">
-          <% @products.each do |product| %>
-            <ul class="list-unstyled">
-  	          <li>
-  	            <%= link_to product_path(product) do %>
-                  <%= image_tag product.get_product_image(180,150) %>
-                <% end %>
-              </li></br>
-              <li>
-                <%= product.name %></li></br>
-              <li>¥<%= product.no_tax_price %></li>
-            </ul>
-          <% end %>
-          </div>
+      <h2 class="mb-3">新着商品</h2>
+      <div class= "row">
+        <div class="col-3">
+        <% @products.each do |product| %>
+          <ul class="list-unstyled">
+  	        <li>
+  	          <%= link_to product_path(product) do %>
+                <%= image_tag product.get_product_image(180,150) %>
+              <% end %>
+            </li></br>
+            <li>
+              <%= product.name %></li></br>
+            <li>¥<%= product.no_tax_price %></li>
+          </ul>
+        <% end %>
         </div>
-      <%= link_to "全ての商品を見る >", products_path, class: "float-right" %>
-    </div>
+      </div>
+    <%= link_to "全ての商品を見る >", products_path, class: "float-right" %>
   </div>
 </div>

@@ -1,19 +1,18 @@
 <div class='container'>
-  <h5 class="col-3 my-3 bg-light text-center">管理者ログイン</h5>
-
+  <h5 class="col-3 my-5 mb-5 bg-light text-center font-weight-bold">管理者ログイン</h5>
+  <div class="col-sm-5 mx-auto">
     <%= form_with model: @admin, url: admin_session_path do |f| %>
-      <div class="field">
+      <div class="field mt-5">
         <%= f.label :メールアドレス %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-
       <div class="field mt-2">
         <%= f.label :パスワード %>
         <%= f.password_field :password, class: "mb-4", autocomplete: "current-password" %>
       </div>
-
-      <div class="actions">
+      <div class="actions mb-5">
         <%= f.submit "ログイン", class: "btn btn-primary" %>
       </div>
     <% end %>
+  </div>
 </div>
