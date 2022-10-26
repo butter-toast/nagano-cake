@@ -1,9 +1,9 @@
 <%= form_with model: @order, url: log_orders_path, local: true do |f| %>
   <p>支払い方法</p>
-  <%= f.radio_button :payment_method, "credit_card" %>
+  <%= f.radio_button :pay_method, 1 %>
   <%= f.label :payment_method, "クレジットカード" %>
 
-  <%= f.radio_button :payment_method, "transfer" %>
+  <%= f.radio_button :pay_method, 2 %>
   <%= f.label :payment_method, "銀行振込" %>
 
 
