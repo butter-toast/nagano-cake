@@ -21,13 +21,15 @@
 
       <div class="d-flex flex-wrap">
         <% @products.each do |product| %>
-        <div class="offset-1 flex-fill">
-          <%= link_to product_path(product) do %>
-            <%= image_tag product.get_product_image(200, 200) %>
-          <% end %>
-          <p><%= product.name %></p>
-          <p>¥<%= product.with_tax_price %></p>
-        </div>
+          <div class="col-4">
+            <%= link_to product_path(product) do %>
+              <%= image_tag product.image, class: "img-fluid" %>
+            <% end %>
+            <p>
+              <%= product.name %><br>
+              ¥<%= product.with_tax_price %>
+            </p>
+          </div>
         <% end %>
       </div>
       <%= paginate @products %>
