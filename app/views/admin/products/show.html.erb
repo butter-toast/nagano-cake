@@ -4,7 +4,7 @@
       <h5>商品詳細</h5>
 
       <div class="media">
-        <%= image_tag @product.get_product_image(200, 200) %>
+        <%= image_tag @product.get_product_image(resize: '200x200') %>
         <div class="media-body offset-1">
           <table class="table table-borderless">
             <tbody>

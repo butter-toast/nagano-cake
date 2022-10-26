@@ -41,6 +41,9 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_number] == "3"
       address_new = current_customer.shippings.new(shipping_params)
       if address_new.save
+        @order.name = address_new.name
+        @order.address = address_new.address
+        @order.post_code = address_new.post_code
       else
         render :new
       end
@@ -56,7 +59,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def shipping_params
-    params.require(:order).permit(:name, :address)
+    params.require(:order).permit(:name, :address, :post_code)
   end
 
 end
