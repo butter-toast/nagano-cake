@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-
+  before_action :authenticate_customer!
   def new
     @order = Order.new
   end
@@ -11,6 +11,7 @@ class Public::OrdersController < ApplicationController
     if @order.save
       cart_items.each do |cart_item|
         order_detail = OrderDetail.new
+        order_detail.order_id = @order.id
         order_detail.product_id = cart_item.product_id
         order_detail.quantity = cart_item.quantity
         order_detail.purchase_prise = cart_item.product.with_tax_price
@@ -64,6 +65,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   private

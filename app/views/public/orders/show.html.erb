@@ -1,7 +1,6 @@
-<%= @order.id %>
-<%= @order.name %>
-<%= @order.address %>
-<%= @order.pay_method %>
-<%= @order.total_price %>
-<%= @order.shipping_fee %>
-<%= @order.status %>
+<% @order_details.each do |order_detail| %>
+  <%= order_detail.product.name %>
+  <%= order_detail.purchase_prise %>
+  <%= order_detail.quantity %>
+  <%= order_detail.subtotal %>
+<% end %>
