@@ -23,15 +23,18 @@ class Public::OrdersController < ApplicationController
     end
   end
 
-  def show
+  def log
     @order = Order.new
     if params[:order][:address_number] == "1"
-      @order.name = current_customer.name
-      @order.address = current_customer.customer_address
+      @order.name = current_customer.full_name
+      @order.address = current_customer.address
+      @order.post_code = current_customer.post_code
     elsif params[:order][:address_number] == "2"
       if Shipping.exists?(name: params[:order][:registered])
-        @order.name = Shipping.find(params[:order][:registered]).name
-        @order.address = Shipping.find(params[:order][:registered]).address
+        @shipping = Shippng.find(params[:order][:shipping_id])
+        @order.name = @shipping.name
+        @order.address = @shipping.address
+        @order.post_code = @shipping.post_code
       else
         render :new
       end

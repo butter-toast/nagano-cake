@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h5 class="col-3 my-3 bg-light text-center">会員一覧</h5>
+      <h5>会員一覧</h5>
 
       <table class="table">
         <thead class="thead-light">
@@ -33,6 +33,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= paginate @customers %>
     </div>
   </div>
 </div>

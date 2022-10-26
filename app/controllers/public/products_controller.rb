@@ -1,11 +1,13 @@
 class Public::ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(6)
+    @genres = Genre.all
   end
 
   def show
     @product = Product.find(params[:id])
     @cart_item = CartItem
+    @genres = Genre.all
   end
 
 
