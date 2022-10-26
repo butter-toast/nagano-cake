@@ -18,7 +18,7 @@
     </table>
     <div class="col-9">
       <div class="media">
-        <%= image_tag @product.get_product_image(300, 300), class: "media-left media-object" %>
+        <%= image_tag @product.get_product_image(200, 200), class: "media-left media-object" %>
         <div class="media-body offset-1">
           <table class="table table-borderless">
             <tr>
@@ -36,8 +36,10 @@
                   <%= f.hidden_field :product_id, value: @product.id %>
                   <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], prompt:"個数選択"%>
                 </td>
-                <td><%= f.submit"カートに入れる", class: "btn btn-sm btn-success"%></td>
-              <% end %>
+                <td>
+                  <%= f.submit"カートに入れる", class: "btn btn-sm btn-success"%>
+                  <% end %>
+                </td>
               <td></td>
             </tr>
           </table>

@@ -1,0 +1,6 @@
+<% @order_details.each do |order_detail| %>
+  <%= order_detail.product.name %>
+  <%= order_detail.purchase_prise %>
+  <%= order_detail.quantity %>
+  <%= order_detail.subtotal %>
+<% end %>
