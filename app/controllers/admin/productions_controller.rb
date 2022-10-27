@@ -1,6 +1,6 @@
 class Admin::ProductionsController < ApplicationController
   def update
-    @product_status = OderDetails.find(params[:id])
+    @product_status = OrderDetail.find(params[:id])
     if @product_status.update(production_params)
       redirect_to admin_order_path
     else
@@ -12,6 +12,6 @@ class Admin::ProductionsController < ApplicationController
   private
 
   def production_params
-    params.require(:product_status).permit(:product_status)
+    params.require(:order_detail).permit(:product_status)
   end
 end
