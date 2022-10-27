@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
     get "about" => "homes#about", as: :about
 
     resources :products
+    resources :genres,only: [:show]
     resources :shippings
     resources :cart_items,only: [:index, :create, :update, :destroy, :destroy_all] do
       collection do
