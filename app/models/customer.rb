@@ -21,4 +21,7 @@ class Customer < ApplicationRecord
     self.last_name + " " + self.first_name
   end
 
+  def addresses
+    "〒" + self.post_code + " " + self.address + " " + self.full_name
+  end
 end
