@@ -18,6 +18,7 @@
 <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
   <%= f.hidden_field :name, value: @order.name %>
   <%= f.hidden_field :address, value: @order.address %>
+  <%= f.hidden_field :post_code, value: @order.post_code %>
   <%= f.hidden_field :total_price, value: @total %>
   <%= f.hidden_field :pay_method, value: @pay_method %>
   <%= f.submit "注文を確定する" %>

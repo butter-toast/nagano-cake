@@ -8,6 +8,15 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
+  def index
+    @orders = Order.all
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+  end
+
   def order_params
     params.require(:order).permit(:status)
   end
