@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
+
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
   devise_for :customers,skip: [:passwords], controllers: {
-    registrations: "public/registrations"
+    registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
@@ -17,6 +14,7 @@ Rails.application.routes.draw do
     get "about" => "homes#about", as: :about
 
     resources :products
+    resources :genres,only: [:show]
     resources :shippings
     resources :cart_items,only: [:index, :create, :update, :destroy, :destroy_all] do
       collection do
@@ -31,13 +29,13 @@ Rails.application.routes.draw do
     #   end
 
     # end
-    
+
     get 'my_page' => 'customers#show', as: 'my_page'
     get 'information/edit' => 'customers#edit'
     patch 'information' => 'customers#update'
     get 'unsubscribe' => 'customers#unsubscribe'
     patch 'withdraw' => 'customers#withdraw'
-    
+
     resources :orders do
       collection do
         post :log
