@@ -1,8 +1,8 @@
 class Admin::ProductionsController < ApplicationController
   def update
-    @product_status = OrderDetail.find(params[:id])
-    if @product_status.update(production_params)
-      redirect_to admin_order_path
+    @order_detail = OrderDetail.find(params[:id])
+    if @order_detail.update(production_params)
+      redirect_to request.referer
     else
       @order = Order.find(params[:id])
       render template: "admin/orders/show"

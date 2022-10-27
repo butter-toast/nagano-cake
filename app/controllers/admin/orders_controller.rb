@@ -1,4 +1,6 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
+
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
@@ -9,7 +11,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.page(params[:page])
   end
 
   def show
