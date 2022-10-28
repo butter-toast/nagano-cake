@@ -10,20 +10,22 @@
         <% @genres.each do |genre| %>
           <tr>
             <td>
-              <%= link_to genre.name %>
+              <%= link_to genre_path(genre.id) do%>
+                <%= genre.name %>
+              <% end %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <div class="col-9">
-      <h2>商品一覧</h2><h3>（全<%= @products.count %>件）</h3>
+      <h2>商品一覧</h2><h3>（全<%= @allproducts.count %>件）</h3>
 
       <div class="d-flex flex-wrap">
         <% @products.each do |product| %>
           <div class="col-4">
             <%= link_to product_path(product) do %>
-              <%= image_tag product.image, class: "img-fluid" %>
+              <%= image_tag product.get_product_image(200,200), class: "img-fluid" %>
             <% end %>
             <p>
               <%= product.name %><br>
