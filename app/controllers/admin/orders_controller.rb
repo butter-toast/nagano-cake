@@ -1,4 +1,4 @@
-class Admin::OrdersController < ApplicationController
+class Admin::OrdersController < ApplicationControllergit status
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
