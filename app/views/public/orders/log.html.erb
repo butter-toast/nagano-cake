@@ -1,24 +1,33 @@
-<% @cart_items.each do |cart_item| %>
-  <%= cart_item.product.name %>
-  <%= (cart_item.product.with_tax_price).to_s(:delimited) %>円
-  <%= cart_item.quantity %>個
-  <%= (cart_item.product.with_tax_price*cart_item.quantity).to_s(:delimited) %>円
-<% end %>
-<p>ご請求金額</p>
-<%= @total.to_s(:delimited) %>円
-<p>お支払い方法</p>
-<%= @pay_method %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5>注文情報入力</h5>
+      
+      <% @cart_items.each do |cart_item| %>
+        <%= cart_item.product.name %>
+        <%= (cart_item.product.with_tax_price).to_s(:delimited) %>円
+        <%= cart_item.quantity %>個
+        <%= (cart_item.product.with_tax_price*cart_item.quantity).to_s(:delimited) %>円
+      <% end %>
+      <p>ご請求金額</p>
+      <%= @total.to_s(:delimited) %>円
+      <p>お支払い方法</p>
+      <%= @pay_method %>
 
-<p>お届け先</p>
-<%= @order.post_code %>
-<%= @order.address %>
-<%= @order.name %>
+      <p>お届け先</p>
+      <%= @order.post_code %>
+      <%= @order.address %>
+      <%= @order.name %>
 
 
-<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-  <%= f.hidden_field :name, value: @order.name %>
-  <%= f.hidden_field :address, value: @order.address %>
-  <%= f.hidden_field :total_price, value: @total %>
-  <%= f.hidden_field :pay_method, value: @pay_method %>
-  <%= f.submit "注文を確定する" %>
-<% end %>
+      <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :name, value: @order.name %>
+        <%= f.hidden_field :address, value: @order.address %>
+        <%= f.hidden_field :post_code, value: @order.post_code %>
+        <%= f.hidden_field :total_price, value: @total %>
+        <%= f.hidden_field :pay_method, value: @pay_method %>
+        <%= f.submit "注文を確定する" %>
+      <% end %>
+    </div>
+  </div>
+</div>
