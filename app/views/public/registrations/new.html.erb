@@ -3,9 +3,7 @@
   <%= form_with model: @customer, url: customer_registration_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
     <div class="row">
-      <div class="col-3">
-        名前
-      </div>
+      <div class="col-3">名前</div>
       <div class="col-3 text-right">
         <%= f.label :（姓） %>
         <%= f.text_field :last_name, placeholder: "令和" %>
@@ -16,9 +14,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-3 my-1">
-        フリガナ
-      </div>
+      <div class="col-3 my-1">フリガナ</div>
       <div class="col-3 text-right my-1">
         <%= f.label :（セイ） %>
         <%= f.text_field :last_name_kana, placeholder: "レイワ" %>
@@ -29,55 +25,28 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-3">
-        メールアドレス
-      </div>
-      <div class="col-3 text-right">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
-      </div>
+      <div class="col-3">メールアドレス</div>
+      <div class="col-3 text-right"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></div>
     </div>
     <div class="row">
-      <div class="col-3 my-2">
-        郵便番号(ハイフンなし)
-      </div>
-      <div class="col-3 text-right my-2">
-        <%= f.text_field :post_code, placeholder: "0000000" %>
-      </div>
+      <div class="col-3 my-2">郵便番号(ハイフンなし)</div>
+      <div class="col-3 text-right my-2"><%= f.text_field :post_code, placeholder: "0000000" %></div>
     </div>
     <div class="row">
-      <div class="col-3">
-        住所
-      </div>
-      <div class="col-3 text-right">
-        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
-      </div>
+      <div class="col-3">住所</div>
+      <div class="address col-3 text-right"><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></div>
     </div>
     <div class="row">
-      <div class="col-3 my-2">
-        電話番号(ハイフンなし)
-      </div>
-      <div class="col-3 text-right my-2">
-        <%= f.text_field :phone_number, placeholder: "0000000000" %>
-      </div>
+      <div class="col-3 my-2">電話番号(ハイフンなし)</div>
+      <div class="col-3 text-right my-2"><%= f.text_field :phone_number, placeholder: "0000000000" %></div>
     </div>
     <div class="row">
-      <div class="col-3">
-        パスワード
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %>文字以上)</em>
-        <% end %>
-      </div>
-      <div class="col-3 text-right">
-        <%= f.text_field :post_code, placeholder: "0000000" %>
-      </div>
+      <div class="col-3">パスワード(6文字以上)</div>
+      <div class="col-3 text-right"><%= f.password_field :password, autocomplete: "new-password" %></div>
     </div>
     <div class="row">
-      <div class="col-3 my-2">
-        パスワード(確認用)
-      </div>
-      <div class="col-3 text-right my-2">
-        <%= f.text_field :post_code, placeholder: "0000000" %>
-      </div>
+      <div class="col-3 my-2">パスワード(確認用)</div>
+      <div class="col-3 text-right my-2"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
     </div>
     <div class="row">
       <div class="col-3"></div>
@@ -93,36 +62,4 @@
   <div class="col-sm-5 mx-auto mb-5">
     <%= render "public/shared/links" %>
   </div>
-</div>
-
-
-
-<div class='container'>
-  <h5 class="col-3 my-5 my-3 bg-light text-center font-weight-bold">新規会員登録</h5>
-  <%= form_with model: @customer, url: customer_registration_path do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
-    <div class="table-responsive table-sm table-borderless">
-      <table class="table">
-        <tr>
-          <td class="col-2">名前</td>
-          <td class="col-5">
-            <%= f.label :（姓） %>　<%= f.text_field :last_name, placeholder: "令和" %>
-            <%= f.label :（名） %>　<%= f.text_field :first_name, placeholder: "道子" %>
-          </td>
-        </tr>
-        <tr>
-          <td class="col-2">フリガナ</td>
-          <td class="col-3"><%= f.label :（セイ） %>  <%= f.text_field :last_name_kana, placeholder: "レイワ" %></td>
-          <td class="col-5"><%= f.label :（メイ） %>  <%= f.text_field :first_name_kana, placeholder: "ミチコ" %></td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td class="col-1">メールアドレス</td>
-          <td class=""></td>
-          <td class="col"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></td>
-        </tr>
-      </table>
-    </div>
-  <% end %>
 </div>
