@@ -1,12 +1,17 @@
 class Admin::ProductionsController < ApplicationController
   def update
     @order_detail = OrderDetail.find(params[:id])
+    order = Order.find_by(id: @order_detail.order_id)
     if @order_detail.update(production_params)
-      if @order_detail.product_status == 2
-        order = Order.find_by(id: @order_detail.order_id)
-        order.update(status: 2)
-      elsif @order_detail.product_status == 3
-        order = Order.find_by(id: @order_detail.order_id)
+      update_order_status_flag = true
+      order.order_details.each do |order_detail|
+        unless order_detail.product_status == 3
+          update_order_status_flag = false
+          break
+        end
+      end
+      if @order_detail.product_status == 2 then order.update(status: 2)
+      elsif @order_detail.product_status == 3 && update_order_status_flag
         order.update(status: 3)
       end
       redirect_to request.referer
