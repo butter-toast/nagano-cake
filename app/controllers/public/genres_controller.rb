@@ -3,5 +3,6 @@ class Public::GenresController < ApplicationController
     @genres = Genre.all
     @genre = Genre.find(params[:id])
     @products = Product.where(genre_id: params[:id]).page(params[:page]).per(6)
+    @allproducts = Product.where(genre_id: params[:id])
   end
 end
