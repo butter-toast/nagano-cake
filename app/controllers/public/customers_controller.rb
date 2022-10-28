@@ -25,6 +25,7 @@ class Public::CustomersController < ApplicationController
   def withdraw
     current_customer.update(is_withdrawal: true)
     sign_out current_customer
+    redirect_to root_path
   end
 
   private
