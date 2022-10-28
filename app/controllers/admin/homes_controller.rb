@@ -3,6 +3,5 @@ class Admin::HomesController < ApplicationController
 
   def top
     @orders = Order.page(params[:page])
-    customer = Customer.all
   end
 end

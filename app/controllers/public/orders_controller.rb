@@ -57,6 +57,7 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, product| sum + product.subtotal }
+    @total_price = @total + @order.shipping_fee
   end
 
   def index
