@@ -5,7 +5,7 @@
     <div class="row">
       <h6 class="col-3 ml-1 my-1 font-weight-bold  ">支払い方法</h6>
       <div class="col-9">
-        <%= f.radio_button :pay_method, 1 %>
+        <%= f.radio_button :pay_method, 1, checked: true %>
         <%= f.label :payment_method, "クレジットカード" %></br>
         <%= f.radio_button :pay_method, 2 %>
         <%= f.label :payment_method, "銀行振込" %>
@@ -14,7 +14,7 @@
     <div class="row">
       <h6 class="col-3 ml-1 my-1 font-weight-bold  ">お届け先</h6>
       <div class="col-9">
-        <%= f.radio_button :address_number, 1 %>
+        <%= f.radio_button :address_number, 1, checked: true %>
         <%= f.label :address_number_1, "ご自身の住所" %>
       </div>
       <div class="col-9">
