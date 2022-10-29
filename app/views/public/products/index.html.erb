@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <table class="table mt-5 border">
+        <thead>
+          <tr><th>ジャンル検索</th></tr>
+        </thead>
+        <tbody class="table-borderless">
+          <% @genres.each do |genre| %>
+            <tr><td>
+              <%= link_to genre_path(genre), class: "text-dark" do %>
+                <%= genre.name %>
+              <% end %>
+            </td></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-9">
+      <h2>商品一覧</h2><h3>（全<%= @allproducts.count %>件）</h3>
+
+      <div class="d-flex flex-wrap">
+        <% @products.each do |product| %>
+          <div class="col-4">
+            <%= link_to product_path(product) do %>
+              <%= image_tag product.get_product_image(200,200), class: "img-fluid" %>
+            <% end %>
+            <p>
+              <%= product.name %><br>
+              ¥<%= product.with_tax_price %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <%= paginate @products %>
+    </div>
+  </div>
+</div>

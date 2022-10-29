@@ -1,0 +1,35 @@
+<div class='container'>
+  <h5 class="col-3 my-5 my-3 bg-light fw-bold font-weight-bold">ログイン</h5>
+  <h6 class="col-3 ml-5 my-3 bg-light text-center">会員の方はこちらからログイン</h6>
+  <div class="col-sm-5 mx-auto">
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    <div class="row">
+      <div class="col-5">
+        メールアドレス
+      </div>
+      <div class="col-6">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-5 my-2">
+        パスワード
+      </div>
+      <div class="col-6 my-2">
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-5"></div>
+      <div class="my-4">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <h6 class="col-3 ml-5 my-4 bg-light text-center">会員登録がお済みでない方</h6>
+  <div class="col-sm-5 mx-auto mb-5">
+    <%= render "public/shared/links" %>
+  </div>
+</div>

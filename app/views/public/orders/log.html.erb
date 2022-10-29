@@ -1,0 +1,72 @@
+<div class="container">
+  <h5 class="col-3 my-5 my-3 bg-light fw-bold text-center">注文情報入力</h5>
+  <div class="row">
+    <table class="table table-borderless">
+      <tr>
+        <th>商品名</th>
+        <th>価格（税込）</th>
+        <th>個数</th>
+        <th>小計</th>
+      </tr>
+      <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.product.name %></td>
+        <td><%= (cart_item.product.with_tax_price).to_s(:delimited) %>円</td>
+        <td><%= cart_item.quantity %>個</td>
+        <td><%= (cart_item.product.with_tax_price*cart_item.quantity).to_s(:delimited) %>円</td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      商品合計
+    </div>
+    <div class="col-3">
+      <%= @total.to_s(:delimited) %>円
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      送料
+    </div>
+    <div class="col-3">
+      <%= @order.shipping_fee %>円
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      ご請求金額
+    </div>
+    <div class="col-3">
+      <%= @total_price %>円
+    </div>
+  </div>
+  <div class="row">
+    <h6 class="col-3 ml-1 my-1 font-weight-bold  ">お支払い方法</h6>
+    <div class="col-9">
+      <%= @pay_method %>
+    </div>
+  </div>
+  <div class="row">
+    <h6 class="col-3 ml-1 my-1 font-weight-bold  ">お届け先</h6>
+    <div class="col-9">
+      〒<%= @order.post_code %>
+      <%= @order.address %>
+      <%= @order.name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :name, value: @order.name %>
+        <%= f.hidden_field :address, value: @order.address %>
+        <%= f.hidden_field :post_code, value: @order.post_code %>
+        <%= f.hidden_field :total_price, value: @total %>
+        <%= f.hidden_field :pay_method, value: @pay_method %>
+        <%= f.submit "注文を確定する",class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
