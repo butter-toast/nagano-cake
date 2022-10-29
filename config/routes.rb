@@ -22,14 +22,6 @@ Rails.application.routes.draw do
       end
     end
 
-    # resource :customers do
-    #   member do
-    #     get :unsubscribe
-    #     patch :withdraw
-    #   end
-
-    # end
-
     get 'my_page' => 'customers#show', as: 'my_page'
     get 'information/edit' => 'customers#edit'
     patch 'information' => 'customers#update'
